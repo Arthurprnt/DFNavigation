@@ -7,7 +7,7 @@ chrome.runtime.onInstalled.addListener(function (){
     });
 })
 
-chrome.runtime.onMessage.addListener( // this is the message listener
+chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         console.log(request);
         if (request.message == "killedTab")

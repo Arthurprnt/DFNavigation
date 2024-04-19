@@ -27,10 +27,12 @@ chrome.storage.local.get(["dfn_websites"]).then((result) => {
         const txt = result.dfn_websites[i];
         paras[i] = document.createElement("p");
         paras[i].id = `${txt}`;
+        paras[i].className = "liste";
         texts[i] = document.createTextNode(`- ${result.dfn_websites[i]} `);
         btns[i] = document.createElement("button");
         btns[i].textContent = 'x';
         btns[i].id = `button-${i}`;
+        btns[i].className = "button";
         btns[i].addEventListener("click", function() {
             rm_elt(txt);
         });
