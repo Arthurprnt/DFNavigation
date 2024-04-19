@@ -1,7 +1,17 @@
 let siteurl = "";
+
+function faviconURL(u) {
+    const url = new URL(chrome.runtime.getURL("/_favicon/"));
+    url.searchParams.set("pageUrl", u);
+    url.searchParams.set("size", "64");
+    return url.toString();
+}
+
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     siteurl = url.split("//")[1].split("/")[0];
+    document.getElementById("theurl").textContent = siteurl;
+    document.getElementById("theicon").src = faviconURL(siteurl); 
 });
 
 
