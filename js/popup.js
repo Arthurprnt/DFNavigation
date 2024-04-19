@@ -21,11 +21,16 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     siteurl = url.split("//")[1].split("/")[0];
     if(!isValidUrl(siteurl)) {
-        let bouton = document.getElementById("ajout")
-        bouton.parentNode.removeChild(bouton)
+        let bouton = document.getElementById("ajout");
+        bouton.parentNode.removeChild(bouton);
+        let icon = document.getElementById("theicon");
+        icon.parentNode.removeChild(icon);
+        let url = document.getElementById("theurl");
+        url.parentNode.removeChild(url);
+    } else {
+        document.getElementById("theurl").textContent = siteurl;
+        document.getElementById("theicon").src = faviconURL(siteurl); 
     }
-    document.getElementById("theurl").textContent = siteurl;
-    document.getElementById("theicon").src = faviconURL(siteurl); 
 });
 
 
