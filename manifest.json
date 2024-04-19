@@ -1,6 +1,6 @@
 {
   "name": "DF Navigation",
-  "description": "Base Level Extension",
+  "description": "Navigate without being distracted by totally blocking websites of your choice.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
@@ -16,9 +16,9 @@
   "permissions": [
     "tabs",
     "activeTab",
+    "favicon",
     "storage",
-    "scripting",
-    "favicon"
+    "scripting"
   ],
   "content_scripts": [
     {

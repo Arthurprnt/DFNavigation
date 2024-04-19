@@ -7,9 +7,23 @@ function faviconURL(u) {
     return url.toString();
 }
 
+const isValidUrl = urlString=> {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+    '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+    return !!urlPattern.test(urlString);
+}
+
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     let url = tabs[0].url;
     siteurl = url.split("//")[1].split("/")[0];
+    if(!isValidUrl(siteurl)) {
+        let bouton = document.getElementById("ajout")
+        bouton.parentNode.removeChild(bouton)
+    }
     document.getElementById("theurl").textContent = siteurl;
     document.getElementById("theicon").src = faviconURL(siteurl); 
 });
