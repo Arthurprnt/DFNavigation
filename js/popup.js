@@ -29,7 +29,7 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         url.parentNode.removeChild(url);
     } else {
         document.getElementById("theurl").textContent = siteurl;
-        document.getElementById("theicon").src = faviconURL(siteurl); 
+        document.getElementById("theicon").src = tabs[0].favIconUrl; 
     }
 });
 
