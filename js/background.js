@@ -19,7 +19,6 @@ chrome.runtime.onInstalled.addListener(function (){
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log(request);
         if (request.message == "killedTab") {
             chrome.tabs.query({ active: true }, function(tabs) {  
                 chrome.tabs.remove(tabs[0].id);   
