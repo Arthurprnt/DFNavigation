@@ -19,7 +19,7 @@ h1 {
 }
 
 .button {
-    background-color: #f44336; /* Green */
+    background-color: #6c15de;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -117,11 +117,11 @@ a {
 }
 
 input:checked + .slider {
-    background-color: #04ab6c;
+    background-color: #6c15de;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #04ab6c;
+    box-shadow: 0 0 1px #6c15de;
 }
 
 input:checked + .slider:before {

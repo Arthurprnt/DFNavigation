@@ -3,18 +3,26 @@
     <title>Manage websites</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="../css/manage.css">
+    <link rel="stylesheet" href="../css/header.css">
   </head>
   <body>
-    <h1>Manage blocked websites</h1>
-    <div id="blocked_div">
-        <p class="title">Blocked websites:</p>
-        <div class="blocking_div">
-          <input id="blocking" class="adding" type="text" placeholder="Block domain (ex: twitter.com)">
-          <button type="button" id="block_btn" class="accept">Block</button>
-        </div>
-    </div>
+    <header>
+      <a class="logo" href="https://github.com/Arthurprnt/DFNavigation" target="_BLANK"><img src="../assets/icon-svg.svg" width="150" height="100" alt="RAaCOS"></a>
+      <nav>
+          <ul class="nav__links">
+              <nav>
+                  <div class="dropdown">
+                      <li><a href="../html/set_block.html">Blocked websites</a></li>
+                      <li><a href="../html/set_limit.html">Time Limit</a></li>
+                      <li><a href="../html/set_premium.html">Premium</a></li>
+                  </div>
+              </nav>
+          </ul>
+      </nav>
+  </header>
+    <h1>Manage time limit</h1>
     <div id="limited_div">
-      <p class="title">Websites included in the time limit:</p>
+      <p class="title">Daily time limit:</p>
       <div class="timer_div">
         <input class="case_timer" type="number" id="hour" name="hour" min="0" max="24" value="0" placeholder="hh"/>
         <h1 class="txt_timer">h</h1>
@@ -23,11 +31,12 @@
         <input class="case_timer" type="number" id="sec" name="sec" min="0" max="60" value="0" placeholder="ss"/>
         <h1 class="txt_timer">s</h1>
       </div>
+      <p class="title">Websites included in the time limit:</p>
       <div class="limited_sites_div">
         <input id="limiting" class="adding" type="text" placeholder="Limit domain (ex: youtube.com)">
         <button type="button" id="limit_btn" class="accept">Limit</button>
       </div>
     </div>
-    <script src="../js/manage.js"></script>
+    <script src="../js/set_limit.js"></script>
   </body>
 </html>

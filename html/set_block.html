@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Manage websites</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../css/manage.css">
+    <link rel="stylesheet" href="../css/header.css">
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="https://github.com/Arthurprnt/DFNavigation" target="_BLANK"><img src="../assets/icon-svg.svg" width="150" height="100" alt="RAaCOS"></a>
+      <nav>
+          <ul class="nav__links">
+              <nav>
+                  <div class="dropdown">
+                      <li><a href="../html/set_block.html">Blocked websites</a></li>
+                      <li><a href="../html/set_limit.html">Time Limit</a></li>
+                      <li><a href="../html/set_premium.html">Premium</a></li>
+                  </div>
+              </nav>
+          </ul>
+      </nav>
+  </header>
+    <h1>Manage blocked websites</h1>
+    <div id="blocked_div">
+        <p class="title">Blocked websites:</p>
+        <div class="blocking_div">
+          <input id="blocking" class="adding" type="text" placeholder="Block domain (ex: twitter.com)">
+          <button type="button" id="block_btn" class="accept">Block</button>
+        </div>
+    </div>
+    <script src="../js/set_block.js"></script>
+  </body>
+</html>

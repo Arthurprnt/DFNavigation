@@ -103,5 +103,5 @@ toggle_obj.addEventListener("click", function() {
 
 const settings_button = document.getElementById("settings");
 settings_button.addEventListener("click", function() {
-    chrome.tabs.create({ url: "../html/manage.html"});
+    chrome.tabs.create({ url: "../html/set_block.html"});
 })

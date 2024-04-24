@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+	<title>icon</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(165.652,228,-253.259,184.003,180.794,136)">
+			<stop offset="0" stop-color="#4c15de"/>
+			<stop offset="1" stop-color="#7d15de"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+	</style>
+	<path id="DF" class="s0" aria-label="DF"  d="m23.5 364h112.2c76 0 128.3-43.2 128.3-113.8 0-70.5-52.3-113.7-128.4-113.7h-112.1zm76.7-59.8v-107.9h32.2c32.2 0 54.3 19.2 54.3 54 0 34.7-22.1 53.9-54.3 53.9zm376.7-109.8v-57.9h-185v227.5h76.7v-72.8h94.9v-57.9h-94.9v-39z"/>
+</svg>
