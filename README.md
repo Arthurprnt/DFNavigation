@@ -6,7 +6,7 @@ Navigate without being distracted by totally blocking websites of your choice or
 
 <p>
   • <a href="#blocking a website">Blocking a website</a></br>
-  • <a href="#add a time limit to a website">Add a time limit to a website</a></br>
+  • <a href="#adding a time limit to a website">Adding a time limit to a website</a></br>
 </p>
 
 ## Blocking a website
@@ -15,7 +15,7 @@ There are two ways to block a website:
 - Either on the popup page
 - Or in the settings page, in the `Block websites` category
 
-## Add a time limit to a website
+## Adding a time limit to a website
 
 To add a time limit to a website, you'll firstly need to include it in the limited websites list. It can be done by two ways:
 - Either on the popup page by turning on the switch
