@@ -9,7 +9,7 @@ chrome.storage.local.get().then((result) => {
             console.log("The page will be blocked soon...");
             window.stop();
             (async () => {
-                const response = await chrome.runtime.sendMessage({message: "killedTab"});
+                const response = await chrome.runtime.sendMessage({message: "blockedTab"});
                 console.log(response);
               })();
     

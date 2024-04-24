@@ -1,10 +1,10 @@
 body {
-    background-color: black;
+    background-color: white;
 }
 
 h1 {
     text-align: center;
-    color: white;
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
     padding-top: 13px;
@@ -24,29 +24,29 @@ h1 {
 }
 
 .liste {
-    color: white;
+    color: black;
     display: flex;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15;
 }
 
-.enonc {
+.title {
     text-align: center;
-    color: white;
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 28;
     padding: 10px;
 }
 
 .adding {
-    background-color: #121212;
-    color: white;
+    background-color: #ffffff;
+    color: black;
     width: 200px;
     text-align: center;
 }
 
-.adding_div {
+.blocking_div {
     display: flex;
     justify-content: center;
 }
@@ -62,12 +62,12 @@ h1 {
     margin-left: 5px;
 }
 
-.limit_div {
+.limited_sites_div {
     display: flex;
     justify-content: center;
 }
 
-.timer {
+.timer_div {
     display: flex;
     justify-content: center;
     padding-bottom: 5px;
