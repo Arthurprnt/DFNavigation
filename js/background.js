@@ -22,8 +22,8 @@ chrome.runtime.onInstalled.addListener(function (){
     chrome.storage.local.set({dfn_use_dark_mode: false}).then(() => {
         console.log(`Initialised dark mode use to false`);
     });
-    chrome.storage.local.set({dfn_color_theme: "#6c15de"}).then(() => {
-        console.log(`Initialised dark mode use to #6c15de`);
+    chrome.storage.local.set({dfn_pwd: ""}).then(() => {
+        console.log(`Initialised password as blank`);
     });
 })
 
@@ -36,11 +36,19 @@ chrome.runtime.onMessage.addListener(
             chrome.tabs.create({ url: "../html/blocked.html"});
             sendResponse({res: "sucess"});
         } else if (request.message == "limitedTab") {
-            chrome.tabs.query({ active: true }, function(tabs) {  
-                chrome.tabs.remove(tabs[0].id);   
+            chrome.tabs.query({ active: true }, function(tabs) {
+                full_url = tabs[0].url;
+                domain = full_url.split("//")[1].split("/")[0];
+                chrome.storage.local.get().then((result) => {
+                    for(i=0; i<result.dfn_limited.length; i+=1) {
+                        if([result.dfn_limited[i], `www.${result.dfn_limited[i]}`, result.dfn_limited[i].replace("www.", "")].includes(domain)) {
+                            chrome.tabs.remove(tabs[0].id); 
+                            chrome.tabs.create({ url: "../html/limited.html"});
+                            sendResponse({res: "sucess"}); 
+                        }
+                    }
+                }); 
             });
-            chrome.tabs.create({ url: "../html/limited.html"});
-            sendResponse({res: "sucess"});
         }
     }
 );

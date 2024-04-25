@@ -90,8 +90,13 @@ toggle_obj.addEventListener("click", function() {
     if(isValidUrl(domain)) {
         chrome.storage.local.get().then((result) => {
             let limited_sites = result.dfn_limited;
-            if(limited_sites.includes(domain)) {
-                let ind = result.dfn_limited.indexOf(domain);
+            let ind = -1;
+            for(i=0; i<result.dfn_limited.length; i+=1) {
+                if([result.dfn_limited[i], `www.${result.dfn_limited[i]}`, result.dfn_limited[i].replace("www.", "")].includes(domain)) {
+                    ind = i;
+                }
+            }
+            if(ind != -1) {
                 let new_limited_list = result.dfn_limited;
                 new_limited_list.splice(ind,1);
                 chrome.storage.local.set({dfn_limited: new_limited_list}).then(() => {

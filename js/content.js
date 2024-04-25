@@ -1,11 +1,11 @@
 let url = document.URL;
-let siteurl = url.split("//")[1].split("/")[0];
+let domain = url.split("//")[1].split("/")[0];
 let run_clock = false;
 let date = new Date().getDate();
-console.log(siteurl);
+
 chrome.storage.local.get().then((result) => {
     for(i=0; i<result.dfn_blocked.length; i+=1) {
-        if([result.dfn_blocked[i], `www.${result.dfn_blocked[i]}`, result.dfn_blocked[i].replace("www.", "")].includes(siteurl)) {
+        if([result.dfn_blocked[i], `www.${result.dfn_blocked[i]}`, result.dfn_blocked[i].replace("www.", "")].includes(domain)) {
             console.log("The page will be blocked soon...");
             window.stop();
             (async () => {
@@ -16,7 +16,7 @@ chrome.storage.local.get().then((result) => {
         }
     }
     for(i=0; i<result.dfn_limited.length; i+=1) {
-        if([result.dfn_limited[i], `www.${result.dfn_limited[i]}`, result.dfn_limited[i].replace("www.", "")].includes(siteurl)) {
+        if([result.dfn_limited[i], `www.${result.dfn_limited[i]}`, result.dfn_limited[i].replace("www.", "")].includes(domain)) {
             run_clock = true;
         }
     }
@@ -40,11 +40,11 @@ chrome.storage.local.get().then((result) => {
 var horloge = setInterval(function() {
     if(run_clock) {
         chrome.storage.local.get().then((result) => {
-            let time = result.dfn_day_time + 10;
+            let time = result.dfn_day_time + 5;
             let tt = result.dfn_timer;
             chrome.storage.local.set({dfn_day_time: time}).then(() => {
                 console.log(`Saved time to ${time}/${tt[0]*3600+tt[1]*60+tt[2]*1}`);
-                if(time >= tt[0]*3600+tt[1]*60+tt[2]) {
+                if(time >= tt[0]*3600+tt[1]*60+tt[2]*1) {
                     console.log("The page will be blocked soon...");
                     window.stop();
                     (async () => {
@@ -55,4 +55,4 @@ var horloge = setInterval(function() {
             });
         });
     }
-}, 10000);
+}, 5000);
