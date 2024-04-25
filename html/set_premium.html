@@ -2,25 +2,49 @@
   <head>
     <title>Manage websites</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="../css/manage.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link id="all_style" rel="stylesheet" href="../css/manage_light.css">
+    <link id="header_style" rel="stylesheet" href="../css/header_light.css">
   </head>
   <body>
-    <header>
+    <header id="head">
       <a class="logo" href="https://github.com/Arthurprnt/DFNavigation" target="_BLANK"><img src="../assets/icon-svg.svg" width="150" height="100" alt="RAaCOS"></a>
       <nav>
           <ul class="nav__links">
               <nav>
                   <div class="dropdown">
-                      <li><a href="../html/set_block.html">Blocked websites</a></li>
+                      <li><a id="li_1" href="../html/set_block.html">Blocked websites</a></li>
                       <li><a href="../html/set_limit.html">Time Limit</a></li>
-                      <li><a href="../html/set_premium.html">Premium</a></li>
+                      <li><a href="../html/set_premium.html">Premium settings</a></li>
                   </div>
               </nav>
           </ul>
       </nav>
   </header>
-    <h1>Coming soon...</h1>
+  <h1 id="loading_txt" class="h1">Loading...</h1>
+    <div id="not_paid" class="not_paid">
+      <h1>You're not subscribed to the premium version.</h1>
+      <p class="desc_prem">With the premium version, you'll be able to:</p>
+      <p class="desc_prem_arg">- use the extension with a dark mode</p>
+      <p class="desc_prem_arg">- add a custom time limit per website</p>
+      <p class="desc_prem_arg">- help me financially (<3)</p>
+      <div class="pay_btn_div">
+        <button id="pay_btn" class="pay_btn">Subscribe now</button>
+      </div>
+    </div>
+    <div id="paid" class="paid">
+      <h1>Premium settings:</h1>
+      <div class="dark_mode_div">
+        <p class="dark_mode_txt">Use dark mode:</p>
+        <label class="switch" id="switch">
+          <input type="checkbox" id="toggle_btn">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="pay_btn_div">
+        <button id="manage_btn" class="pay_btn">Manage subscription</button>
+      </div>
+    </div>
+    <script src="../js/ExtPay.js"></script>
     <script src="../js/set_premium.js"></script>
   </body>
 </html>

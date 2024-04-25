@@ -3,7 +3,6 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 0px 19.5%;
-    background-color: #ffffff;
 }
 
 .logo {
@@ -15,7 +14,7 @@ header {
 .overlay__content a {
   font-family: "Montserrat ExtraBold", sans-serif;
   font-weight: 500;
-  color: #000000;
+  color: white;
   text-decoration: none;
 }
 
@@ -46,7 +45,7 @@ header {
 .dropdown button {
     background: none;
     border: none;
-    color: black;
+    color: white;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;

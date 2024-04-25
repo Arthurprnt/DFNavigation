@@ -1,3 +1,7 @@
+importScripts('ExtPay.js');
+var extpay = ExtPay('dfnavigation'); 
+extpay.startBackground();
+
 chrome.runtime.onInstalled.addListener(function (){
     chrome.storage.local.set({dfn_blocked: []}).then(() => {
         console.log("Initialised blocked list");
@@ -14,6 +18,12 @@ chrome.runtime.onInstalled.addListener(function (){
     let now = new Date().getDate();
     chrome.storage.local.set({dfn_last_connection: now}).then(() => {
         console.log(`Initialised last connection list to ${now}`);
+    });
+    chrome.storage.local.set({dfn_use_dark_mode: false}).then(() => {
+        console.log(`Initialised dark mode use to false`);
+    });
+    chrome.storage.local.set({dfn_color_theme: "#6c15de"}).then(() => {
+        console.log(`Initialised dark mode use to #6c15de`);
     });
 })
 

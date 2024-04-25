@@ -1,3 +1,7 @@
+function swapStyleSheet(sheet) {
+    document.getElementById("css_style").setAttribute("href", sheet);  
+}
+
 function faviconURL(u) {
     const url = new URL(chrome.runtime.getURL("/_favicon/"));
     url.searchParams.set("pageUrl", u);
@@ -31,6 +35,11 @@ function rm_site_menu() {
 let domain = "";
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    chrome.storage.local.get().then((result) => {
+        if(result.dfn_use_dark_mode) {
+            swapStyleSheet("../css/popup_dark.css")
+        }
+    });
     let full_url = tabs[0].url;
     if(full_url.startsWith("chrome-extension://")) {
         rm_site_menu();

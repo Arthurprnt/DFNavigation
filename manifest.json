@@ -23,15 +23,14 @@
   ],
   "content_scripts": [
     {
-      "js": ["js/content.js"],
+      "js": ["js/content.js", "js/ExtPay.js"],
       "matches": ["<all_urls>"],
       "all_frames": false,
       "run_at":"document_start"
     }
   ],
   "background": {
-    "service_worker": "js/background.js",
-    "type": "module"
+    "service_worker": "js/background.js"
   },
   "web_accessible_resources": [
     {

@@ -3,6 +3,15 @@ var texts_blo = [];
 var paras_blo = [];
 var btns_blo = [];
 
+function swapStyleSheet(id, sheet) {
+    document.getElementById(id).setAttribute("href", sheet);  
+}
+
+function setEltsColor(sheet_ext) {
+    swapStyleSheet("all_style", `../css/manage_${sheet_ext}.css`);
+    swapStyleSheet("header_style", `../css/header_${sheet_ext}.css`);
+}
+
 function rm_elt_blo(texte) {
     chrome.storage.local.get().then((result) => {
         if(result.dfn_blocked.includes(texte)) {
@@ -89,6 +98,9 @@ function addChild(paras, texts, btns, elts, rm_f, id_ext, btn_id) {
 
 chrome.storage.local.get().then((result) => {
     showChild(result.dfn_blocked, paras_blo, texts_blo, btns_blo, elts_blo, rm_elt_blo, "blo");
+    if(result.dfn_use_dark_mode) {
+        setEltsColor("dark");
+    }
 });
 
 document.getElementById("block_btn").addEventListener("click", function() {

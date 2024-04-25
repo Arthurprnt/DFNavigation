@@ -3,6 +3,15 @@ var texts_lim = [];
 var paras_lim = [];
 var btns_lim = [];
 
+function swapStyleSheet(id, sheet) {
+    document.getElementById(id).setAttribute("href", sheet);  
+}
+
+function setEltsColor(sheet_ext) {
+    swapStyleSheet("all_style", `../css/manage_${sheet_ext}.css`);
+    swapStyleSheet("header_style", `../css/header_${sheet_ext}.css`);
+}
+
 function rm_elt_lim(texte) {
     chrome.storage.local.get().then((result) => {
         if(result.dfn_limited.includes(texte)) {
@@ -106,6 +115,9 @@ function save_timer() {
 
 chrome.storage.local.get().then((result) => {
     showChild(result.dfn_limited, paras_lim, texts_lim, btns_lim, elts_lim, rm_elt_lim, "lim");
+    if(result.dfn_use_dark_mode) {
+        setEltsColor("dark");
+    }
 });
 
 document.getElementById("limit_btn").addEventListener("click", function() {
