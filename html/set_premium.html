@@ -25,6 +25,7 @@
       <h1>You're not subscribed to the premium version.</h1>
       <p class="desc_prem">With the premium version, you'll be able to:</p>
       <p class="desc_prem_arg">- use the extension with a dark mode</p>
+      <p class="desc_prem_arg">- set a password for settings</p>
       <p class="desc_prem_arg">- add a custom time limit per website</p>
       <p class="desc_prem_arg">- help me financially (<3)</p>
       <div class="pay_btn_div">
@@ -33,15 +34,39 @@
     </div>
     <div id="paid" class="paid">
       <h1>Premium settings:</h1>
-      <div class="dark_mode_div">
-        <p class="dark_mode_txt">Use dark mode:</p>
-        <label class="switch" id="switch">
-          <input type="checkbox" id="toggle_btn">
-          <span class="slider round"></span>
-        </label>
+      <div id="enter_pwd_div" class="enter_pwd_div">
+        <input id="pwd_input" class="adding" type="password" placeholder="Enter your password">
+        <button type="button" id="access_btn" class="accept">Enter</button>
       </div>
-      <div class="pay_btn_div">
-        <button id="manage_btn" class="pay_btn">Manage subscription</button>
+      <div class="put_pwd" id="put_pwd">
+        <div class="dark_mode_div">
+          <p class="dark_mode_txt">Use dark mode:</p>
+          <label class="switch" id="switch">
+            <input type="checkbox" id="toggle_btn">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="pwd_div">
+          <p class="pwd_desc_txt">Set a password to access settings:</p>
+          <div class="pwd_txt_div">
+            <input id="pwd_txt" class="pwd_txt" type="password" placeholder="Password">
+          </div>
+          <div class="pwd_conf_div">
+            <input id="confirm_pwd_txt" class="pwd_txt" type="password" placeholder="Confirm password">
+          </div>
+          <div class="pwd_btn_div">
+            <button type="button" id="pwd_btn" class="pwd_btn">Change password</button>
+          </div>
+          <div class="del_pwd_btn_div">
+            <button type="button" id="del_pwd_btn" class="pwd_btn">Delete password</button>
+          </div>
+        </div>
+        <div class="more_txt">
+          <p class="dark_mode_txt">More coming soon...</p>
+        </div>
+        <div class="pay_btn_div">
+          <button id="manage_btn" class="pay_btn">Manage subscription</button>
+        </div>
       </div>
     </div>
     <script src="../js/ExtPay.js"></script>
