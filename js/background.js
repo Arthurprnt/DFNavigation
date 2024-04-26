@@ -1,6 +1,7 @@
 importScripts('ExtPay.js');
 var extpay = ExtPay('dfnavigation'); 
 extpay.startBackground();
+let run_clock = false;
 
 chrome.runtime.onInstalled.addListener(function (){
     chrome.storage.local.set({dfn_blocked: []}).then(() => {
@@ -49,6 +50,22 @@ chrome.runtime.onMessage.addListener(
                     }
                 }); 
             });
+        } else if(request.message == "runClock") {
+            run_clock = true;
+            sendResponse({res: "sucess"})
         }
     }
 );
+
+var horloge = setInterval(function() {
+    if(run_clock) {
+        chrome.storage.local.get().then((result) => {
+            let time = result.dfn_day_time + 10;
+            let tt = result.dfn_timer;
+            chrome.storage.local.set({dfn_day_time: time}).then(() => {
+                console.log(`Saved time to ${time}/${tt[0]*3600+tt[1]*60+tt[2]*1}`);
+            });
+        });
+        run_clock = false;
+    }
+}, 10000);

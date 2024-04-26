@@ -135,14 +135,19 @@ chrome.storage.local.get().then((result) => {
         document.getElementById('enter_pwd_div').remove();
     }
     let spent_time = result.dfn_day_time;
-    let spent_hours = Math.floor(spent_time/3600);
-    let spent_minutes = Math.floor((spent_time-spent_hours)/60);
-    let spent_secondes = spent_time-(spent_hours*3600)-(spent_minutes*60);
-    let spent_txt = "";
-    spent_txt += addTimeToTxt(spent_hours, "h");
-    spent_txt += addTimeToTxt(spent_minutes, "m");
-    spent_txt += addTimeToTxt(spent_secondes, "s");
-    document.getElementById("report_p").innerText = `You've already spent ${spent_txt} on limited websites.`;
+    let tt = result.dfn_timer;
+    if(spent_time >= tt[0]*3600+tt[1]*60+tt[2]*1) {
+        document.getElementById("report_p").innerText = `You've already reached your daily time limit, take a break.`;
+    } else {
+        let spent_hours = Math.floor(spent_time/3600);
+        let spent_minutes = Math.floor((spent_time-spent_hours)/60);
+        let spent_secondes = spent_time-(spent_hours*3600)-(spent_minutes*60);
+        let spent_txt = "";
+        spent_txt += addTimeToTxt(spent_hours, "h");
+        spent_txt += addTimeToTxt(spent_minutes, "m");
+        spent_txt += addTimeToTxt(spent_secondes, "s");
+        document.getElementById("report_p").innerText = `You've already spent ${spent_txt} on limited websites.`;
+    }
 });
 
 document.getElementById("limit_btn").addEventListener("click", function() {

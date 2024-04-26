@@ -26,7 +26,7 @@ chrome.storage.local.get().then((result) => {
         });
     } else if(run_clock) {
         let tt = result.dfn_timer;
-        if(tt >= tt[0]*3600+tt[1]*60+tt[2]*1) {
+        if(result.dfn_day_time >= tt[0]*3600+tt[1]*60+tt[2]*1) {
             console.log("The page will be blocked soon...");
             window.stop();
             (async () => {
@@ -39,20 +39,19 @@ chrome.storage.local.get().then((result) => {
 
 var horloge = setInterval(function() {
     if(run_clock) {
+        (async () => {
+            const response = await chrome.runtime.sendMessage({message: "runClock"});
+            console.log(response);
+        })();
         chrome.storage.local.get().then((result) => {
-            let time = result.dfn_day_time + 5;
             let tt = result.dfn_timer;
-            chrome.storage.local.set({dfn_day_time: time}).then(() => {
-                console.log(`Saved time to ${time}/${tt[0]*3600+tt[1]*60+tt[2]*1}`);
-                if(time >= tt[0]*3600+tt[1]*60+tt[2]*1) {
-                    console.log("The page will be blocked soon...");
-                    window.stop();
-                    (async () => {
-                        const response = await chrome.runtime.sendMessage({message: "limitedTab"});
-                        console.log(response);
-                    })();
-                }
-            });
+            if(result.dfn_day_time >= tt[0]*3600+tt[1]*60+tt[2]*1) {
+                console.log("The page will be blocked soon...");
+                (async () => {
+                    const response = await chrome.runtime.sendMessage({message: "limitedTab"});
+                    console.log(response);
+                })();
+            }
         });
     }
-}, 5000);
+}, 4950);
