@@ -8,17 +8,27 @@
       <img class="favicon" id="favicon" width="50" height="50">
     </div>
     <p class="domain" id="domain">url</p>
-    <div class="toggle_div">
-      <p class="toggle_title" id="toggle_title">Include in time limit</p>
-      <div class="toggle">
-        <label class="switch" id="switch">
-          <input type="checkbox" id="toggle_btn">
-          <span class="slider round" id="slider"></span>
-        </label>
+    <div id="enter_pwd_div" class="enter_pwd_div">
+      <div class="pwd_txt">
+        <input id="pwd_input" class="pwd_input" type="password" placeholder="Enter your password">
+      </div>
+      <div class="pwd_btn">
+        <button type="button" id="access_btn" class="button">Enter</button>
       </div>
     </div>
-    <div class="btn_blo_div">
-      <input class="button" type="submit" id="block" value="Block this website" />
+    <div id="put_pwd_div" class="put_pwd_div">
+      <div class="toggle_div">
+        <p class="toggle_title" id="toggle_title">Include in time limit</p>
+        <div class="toggle">
+          <label class="switch" id="switch">
+            <input type="checkbox" id="toggle_btn">
+            <span class="slider round" id="slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="btn_blo_div">
+        <input class="button" type="submit" id="block" value="Block this website" />
+      </div>
     </div>
     <div class="btn_set_div">
       <input class="button" type="submit" id="settings" value="Settings"/>

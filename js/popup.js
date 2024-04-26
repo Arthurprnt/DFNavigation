@@ -39,6 +39,10 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         if(result.dfn_use_dark_mode) {
             swapStyleSheet("../css/popup_dark.css")
         }
+        if(result.dfn_pwd == "") {
+            document.getElementById("put_pwd_div").style.display = "block";
+            document.getElementById('enter_pwd_div').remove();
+        }
     });
     let full_url = tabs[0].url;
     if(full_url.startsWith("chrome-extension://")) {
@@ -118,4 +122,17 @@ toggle_obj.addEventListener("click", function() {
 const settings_button = document.getElementById("settings");
 settings_button.addEventListener("click", function() {
     chrome.tabs.create({ url: "../html/set_block.html"});
+})
+
+document.getElementById("access_btn").addEventListener("click", function() {
+    let pwd_input = document.getElementById("pwd_input");
+    chrome.storage.local.get().then((result) => {
+        if(result.dfn_pwd == pwd_input.value) {
+            document.getElementById("put_pwd_div").style.display = "block";
+            document.getElementById('enter_pwd_div').remove();
+        } else {
+            alert("Wrong password.");
+            pwd_input.value = "";
+        }
+    });
 })

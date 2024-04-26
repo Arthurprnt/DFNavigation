@@ -138,3 +138,30 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.pwd_input {
+    background-color: black;
+    color: white;
+    width: 180px;
+    height: 30px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.pwd_txt {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 30px;
+}
+
+.pwd_btn {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.put_pwd_div {
+    display: none;
+}
