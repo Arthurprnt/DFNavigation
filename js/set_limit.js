@@ -113,6 +113,18 @@ function save_timer() {
     });
 }
 
+function addTimeToTxt(value, format) {
+    if(value != 0) {
+        if(String(value).length == 1) {
+            return `0${value}${format}`;
+        } else {
+            return `${value}${format}`;
+        }
+    }  else {
+        return "";
+    }
+}
+
 chrome.storage.local.get().then((result) => {
     showChild(result.dfn_limited, paras_lim, texts_lim, btns_lim, elts_lim, rm_elt_lim, "lim");
     if(result.dfn_use_dark_mode) {
@@ -122,6 +134,15 @@ chrome.storage.local.get().then((result) => {
         document.getElementById("limited_div").style.display = "block";
         document.getElementById('enter_pwd_div').remove();
     }
+    let spent_time = result.dfn_day_time;
+    let spent_hours = Math.floor(spent_time/3600);
+    let spent_minutes = Math.floor((spent_time-spent_hours)/60);
+    let spent_secondes = spent_time-(spent_hours*3600)-(spent_minutes*60);
+    let spent_txt = "";
+    spent_txt += addTimeToTxt(spent_hours, "h");
+    spent_txt += addTimeToTxt(spent_minutes, "m");
+    spent_txt += addTimeToTxt(spent_secondes, "s");
+    document.getElementById("report_p").innerText = `You've already spent ${spent_txt} on limited websites.`;
 });
 
 document.getElementById("limit_btn").addEventListener("click", function() {
