@@ -15,11 +15,9 @@
   },
   "permissions": [
     "tabs",
-    "activeTab",
     "favicon",
     "storage",
-    "unlimitedStorage",
-    "scripting"
+    "unlimitedStorage"
   ],
   "content_scripts": [
     {
