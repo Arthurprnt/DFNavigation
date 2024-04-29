@@ -46,7 +46,7 @@ function showChild(res, paras, texts, btns, elts, rm_f, id_ext) {
         texts[i] = document.createTextNode(`- ${res[i]} `);
         btns[i] = document.createElement("button");
         btns[i].textContent = 'x';
-        btns[i].id = `button-${i}`;
+        btns[i].id = `button`;
         btns[i].className = "button";
         btns[i].addEventListener("click", function() {
             rm_f(txt);

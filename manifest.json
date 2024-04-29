@@ -1,7 +1,7 @@
 {
   "name": "DF Navigation",
   "description": "Navigate without being distracted by totally blocking websites of your choice or add a time limit to a group of websites.",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "action": {
     "default_popup": "html/popup.html",

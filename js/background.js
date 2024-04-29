@@ -26,6 +26,12 @@ chrome.runtime.onInstalled.addListener(function (){
     chrome.storage.local.set({dfn_pwd: ""}).then(() => {
         console.log(`Initialised password as blank`);
     });
+    chrome.storage.local.set({dfn_custom_limited: {}}).then(() => {
+        console.log(`Initialised list for websites with a custom time limit`);
+    });
+    chrome.storage.local.set({dfn_websites_time: {}}).then(() => {
+        console.log(`Initialised websites timers`);
+    });
 })
 
 chrome.runtime.onMessage.addListener(
@@ -50,9 +56,36 @@ chrome.runtime.onMessage.addListener(
                     }
                 }); 
             });
+        } else if(request.message == "limitedCustomTab") {
+            chrome.tabs.query({ active: true }, function(tabs) {
+                full_url = tabs[0].url;
+                domain = full_url.split("//")[1].split("/")[0];
+                chrome.storage.local.get().then((result) => {
+                    for(key in result.dfn_custom_limited) {
+                        if([key, `www.${key}`, key.replace("www.", "")].includes(domain)) {
+                            chrome.tabs.remove(tabs[0].id); 
+                            chrome.tabs.create({ url: "../html/limited_premium.html"});
+                            sendResponse({res: "sucess"}); 
+                        }
+                    }
+                }); 
+            });
         } else if(request.message == "runClock") {
             run_clock = true;
             sendResponse({res: "sucess"})
+        } else if(request.message == "newPageLoad") {
+            extpay.getUser().then(user => {
+                if (!user.paid) {
+                    chrome.storage.local.set({dfn_use_dark_mode: false, dfn_pwd: "", dfn_custom_limited: {}, dfn_websites_time: {}}).then(() => {
+                        console.log(`Reset the premium options as the user is not subscribed`);
+                        sendResponse({res: "sucess"});
+                    });
+                }
+            }).catch(err => {
+                console.log(err);
+                sendResponse({res: err});
+            })
+            sendResponse({res: "sucess"});
         }
     }
 );
