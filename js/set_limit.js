@@ -140,7 +140,7 @@ chrome.storage.local.get().then((result) => {
         document.getElementById("report_p").innerText = `You've already reached your daily time limit, take a break.`;
     } else {
         let spent_hours = Math.floor(spent_time/3600);
-        let spent_minutes = Math.floor((spent_time-spent_hours)/60);
+        let spent_minutes = Math.floor((spent_time-(spent_hours*3600))/60);
         let spent_secondes = spent_time-(spent_hours*3600)-(spent_minutes*60);
         let spent_txt = "";
         spent_txt += addTimeToTxt(spent_hours, "h");

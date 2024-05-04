@@ -4,34 +4,55 @@ extpay.startBackground();
 let run_clock = false;
 
 chrome.runtime.onInstalled.addListener(function (){
-    chrome.storage.local.set({dfn_blocked: []}).then(() => {
-        console.log("Initialised blocked list");
+    chrome.storage.local.get().then((result) => {
+        if(result.dfn_blocked === undefined) {
+            chrome.storage.local.set({dfn_blocked: []}).then(() => {
+                console.log("Initialised blocked list");
+            });
+        }
+        if(result.dfn_limited === undefined) {
+            chrome.storage.local.set({dfn_limited: []}).then(() => {
+                console.log("Initialised limited list");
+            });
+        }
+        if(result.dfn_timer === undefined) {
+            chrome.storage.local.set({dfn_timer: [0, 45, 0]}).then(() => {
+                console.log("Initialised timer list");
+            });        
+        }
+        if(result.dfn_day_time === undefined) {
+            chrome.storage.local.set({dfn_day_time: 0}).then(() => {
+                console.log("Initialised day's timer list");
+            });
+        }
+        if(result.dfn_last_connection === undefined) {
+            let now = new Date().getDate();
+            chrome.storage.local.set({dfn_last_connection: now}).then(() => {
+                console.log(`Initialised last connection list to ${now}`);
+            });
+        }
+        if(result.dfn_use_dark_mode === undefined) {
+            chrome.storage.local.set({dfn_use_dark_mode: false}).then(() => {
+                console.log(`Initialised dark mode use to false`);
+            });        
+        }
+        if(result.dfn_pwd === undefined) {
+            chrome.storage.local.set({dfn_pwd: ""}).then(() => {
+                console.log(`Initialised password as blank`);
+            });
+        }
+        if(result.dfn_custom_limited === undefined) {
+            chrome.storage.local.set({dfn_custom_limited: {}}).then(() => {
+                console.log(`Initialised list for websites with a custom time limit`);
+            });
+        }
+        if(result.dfn_websites_time === undefined) {
+            chrome.storage.local.set({dfn_websites_time: {}}).then(() => {
+                console.log(`Initialised websites timers`);
+            });
+        }
     });
-    chrome.storage.local.set({dfn_limited: []}).then(() => {
-        console.log("Initialised limited list");
-    });
-    chrome.storage.local.set({dfn_timer: [0, 45, 0]}).then(() => {
-        console.log("Initialised timer list");
-    });
-    chrome.storage.local.set({dfn_day_time: 0}).then(() => {
-        console.log("Initialised day's timer list");
-    });
-    let now = new Date().getDate();
-    chrome.storage.local.set({dfn_last_connection: now}).then(() => {
-        console.log(`Initialised last connection list to ${now}`);
-    });
-    chrome.storage.local.set({dfn_use_dark_mode: false}).then(() => {
-        console.log(`Initialised dark mode use to false`);
-    });
-    chrome.storage.local.set({dfn_pwd: ""}).then(() => {
-        console.log(`Initialised password as blank`);
-    });
-    chrome.storage.local.set({dfn_custom_limited: {}}).then(() => {
-        console.log(`Initialised list for websites with a custom time limit`);
-    });
-    chrome.storage.local.set({dfn_websites_time: {}}).then(() => {
-        console.log(`Initialised websites timers`);
-    });
+    
 })
 
 chrome.runtime.onMessage.addListener(
