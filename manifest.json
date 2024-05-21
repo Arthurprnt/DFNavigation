@@ -1,7 +1,7 @@
 {
   "name": "DF Navigation",
   "description": "Navigate without being distracted by totally blocking websites of your choice or add a time limit to a group of websites.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "html/popup.html",
@@ -21,7 +21,7 @@
   ],
   "content_scripts": [
     {
-      "js": ["js/content.js", "js/ExtPay.js"],
+      "js": ["js/content.js"],
       "matches": ["<all_urls>"],
       "all_frames": false,
       "run_at":"document_start"

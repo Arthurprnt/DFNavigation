@@ -73,11 +73,6 @@ chrome.storage.local.get().then((result) => {
     }
 });
 
-(async () => {
-    const response = await chrome.runtime.sendMessage({message: "newPageLoad"});
-    console.log(response);
-})();
-
 var horloge = setInterval(function() {
     if(run_clock_groupe) {
         (async () => {

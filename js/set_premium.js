@@ -1,4 +1,3 @@
-var extpay = ExtPay('dfnavigation');
 const toggle_obj = document.getElementById("toggle_btn"); 
 
 const elts_cus = document.getElementById("custom_lim_div");
@@ -157,9 +156,6 @@ function addChild(paras, texts, btns, elts, rm_f, id_ext, btn_id) {
     }
 }
 
-document.getElementById("pay_btn").addEventListener('click', extpay.openPaymentPage)
-document.getElementById("manage_btn").addEventListener('click', extpay.openPaymentPage)
-
 chrome.storage.local.get().then((result) => {
     showChild(result.dfn_custom_limited, paras_cus, texts_cus, btns_cus, elts_cus, rm_elt_cus, "cus");
     if(result.dfn_use_dark_mode) {
@@ -171,19 +167,6 @@ chrome.storage.local.get().then((result) => {
         document.getElementById('enter_pwd_div').remove();
     }
 });
-
-extpay.getUser().then(user => {
-    document.getElementById("loading_txt").remove();
-    if (user.paid) {
-        document.getElementById('not_paid').remove();
-        document.getElementById("paid").style.display = "block";
-    } else {
-        document.getElementById('paid').remove();
-        document.getElementById("not_paid").style.display = "block";
-    }
-}).catch(err => {
-    console.log(err);
-})
 
 toggle_obj.addEventListener("click", function() {
     chrome.storage.local.get().then((result) => {

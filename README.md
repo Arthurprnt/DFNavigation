@@ -7,7 +7,7 @@ Navigate without being distracted by totally blocking websites of your choice or
 <p>
   • <a href="#blocking a website">Blocking a website</a></br>
   • <a href="#adding a time limit to a website">Adding a time limit to a website</a></br>
-  • <a href="#premium settings">Premium settings</a></br>
+  • <a href="#other settings">Other settings</a></br>
   • <a href="#privacy Policies">Privacy Policies</a></br>
 </p>
 
@@ -25,11 +25,12 @@ To add a time limit to a website, you'll firstly need to include it in the limit
 
 Then, you'll just need the choose the time limit on the settings page.
 
-## Premium settings
+## Other settings
 
-You can subscribe to the premium version to access to additional settings. Here are those settings:
+There was a time where you could subscribe to a premium version to access to additional settings. Here are those settings, now they're just free:
 - Use a dark mode in the extension pages
 - Set a password to access the settings and modify them
+- Add a custom time limit per website
 
 ## Privacy Policies
 

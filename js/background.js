@@ -1,6 +1,3 @@
-importScripts('ExtPay.js');
-var extpay = ExtPay('dfnavigation'); 
-extpay.startBackground();
 let run_clock = false;
 
 chrome.runtime.onInstalled.addListener(function (){
@@ -94,19 +91,6 @@ chrome.runtime.onMessage.addListener(
         } else if(request.message == "runClock") {
             run_clock = true;
             sendResponse({res: "sucess"})
-        } else if(request.message == "newPageLoad") {
-            extpay.getUser().then(user => {
-                if (!user.paid) {
-                    chrome.storage.local.set({dfn_use_dark_mode: false, dfn_pwd: "", dfn_custom_limited: {}, dfn_websites_time: {}}).then(() => {
-                        console.log(`Reset the premium options as the user is not subscribed`);
-                        sendResponse({res: "sucess"});
-                    });
-                }
-            }).catch(err => {
-                console.log(err);
-                sendResponse({res: err});
-            })
-            sendResponse({res: "sucess"});
         }
     }
 );

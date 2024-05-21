@@ -102,14 +102,6 @@ h1 {
     font-size: 30px;
 }
 
-.paid{
-    display: none;
-}
-
-.not_paid{
-    display: none;
-}
-
 .switch {
     position: relative;
     display: inline-block;
