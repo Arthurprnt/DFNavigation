@@ -1,4 +1,7 @@
-const toggle_obj = document.getElementById("toggle_btn"); 
+const toggle_dark = document.getElementById("toggle_darkmode");
+const toggle_hardcore = document.getElementById("toggle_hardcore");
+var hc_click_nb = 0;
+let hc_activated;
 
 const elts_cus = document.getElementById("custom_lim_div");
 var texts_cus = [];
@@ -159,16 +162,18 @@ function addChild(paras, texts, btns, elts, rm_f, id_ext, btn_id) {
 chrome.storage.local.get().then((result) => {
     showChild(result.dfn_custom_limited, paras_cus, texts_cus, btns_cus, elts_cus, rm_elt_cus, "cus");
     if(result.dfn_use_dark_mode) {
-        toggle_obj.checked = result.dfn_use_dark_mode;
+        toggle_dark.checked = result.dfn_use_dark_mode;
         setEltsColor("dark");
     }
+    toggle_hardcore.checked = result.dfn_hardcore_mode;
+    hc_activated = result.dfn_hardcore_mode;
     if(result.dfn_pwd == "") {
         document.getElementById("put_pwd").style.display = "block";
         document.getElementById('enter_pwd_div').remove();
     }
 });
 
-toggle_obj.addEventListener("click", function() {
+toggle_dark.addEventListener("click", function() {
     chrome.storage.local.get().then((result) => {
         let bool_val = !result.dfn_use_dark_mode;
         chrome.storage.local.set({dfn_use_dark_mode: bool_val}).then(() => {
@@ -179,6 +184,27 @@ toggle_obj.addEventListener("click", function() {
             }
         });
     });
+})
+
+toggle_hardcore.addEventListener("click", function() {
+    if(!hc_activated) {
+        if(hc_click_nb < 3) {
+            toggle_hardcore.checked = false;
+            hc_click_nb += 1;
+            document.getElementById(`hc_conf_${hc_click_nb}`).style.display = "flex";
+            console.log(hc_click_nb);
+        } else {
+            for(i=1; i<4; i+=1) {
+                document.getElementById(`hc_conf_${i}`).style.display = "none";
+            }
+            document.getElementById(`hc_conf_4`).style.display = "flex";
+            chrome.storage.local.set({dfn_hardcore_mode: true}).then(() => {
+                hc_activated = true;
+            });
+        }
+    } else {
+        toggle_hardcore.checked = true;
+    }
 })
 
 document.getElementById("pwd_btn").addEventListener("click", function() {

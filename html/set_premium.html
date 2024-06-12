@@ -21,7 +21,7 @@
       </nav>
   </header>
     <div id="paid" class="paid">
-      <h1>Premium settings:</h1>
+      <h1>Other settings:</h1>
       <div id="enter_pwd_div" class="enter_pwd_div">
         <input id="pwd_input" class="adding" type="password" placeholder="Enter your password">
         <button type="button" id="access_btn" class="accept">Enter</button>
@@ -30,7 +30,7 @@
         <div class="dark_mode_div">
           <p class="dark_mode_txt">Use dark mode:</p>
           <label class="switch" id="switch">
-            <input type="checkbox" id="toggle_btn">
+            <input type="checkbox" id="toggle_darkmode">
             <span class="slider round"></span>
           </label>
         </div>
@@ -56,6 +56,17 @@
             <button type="button" id="limit_btn" class="accept">Add a custom limit</button>
           </div>
         </div>
+        <div class="dark_mode_div">
+          <p class="dark_mode_txt">Switch to harcore mode:</p>
+          <label class="switch" id="switch">
+            <input type="checkbox" id="toggle_hardcore">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <p id="hc_conf_1" class="hc_mode_txt">Are you sure ?</p>
+        <p id="hc_conf_2" class="hc_mode_txt">You won't be able to change it in the futur</p>
+        <p id="hc_conf_3" class="hc_mode_txt">Alright, click again to activate it...</p>
+        <p id="hc_conf_4" class="hc_mode_txt">Now this is gonna be fun !</p>
       </div>
     </div>
     <script src="../js/set_premium.js"></script>

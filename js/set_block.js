@@ -2,6 +2,7 @@ const elts_blo = document.getElementById("blocked_div");
 var texts_blo = [];
 var paras_blo = [];
 var btns_blo = [];
+let hc_activated;
 
 function swapStyleSheet(id, sheet) {
     document.getElementById(id).setAttribute("href", sheet);  
@@ -44,15 +45,17 @@ function showChild(res, paras, texts, btns, elts, rm_f, id_ext) {
         paras[i].id = `${txt}-${id_ext}`;
         paras[i].className = "liste";
         texts[i] = document.createTextNode(`- ${res[i]} `);
-        btns[i] = document.createElement("button");
-        btns[i].textContent = 'x';
-        btns[i].id = `button-${i}`;
-        btns[i].className = "button";
-        btns[i].addEventListener("click", function() {
-            rm_f(txt);
-        });
         paras[i].appendChild(texts[i]);
-        paras[i].appendChild(btns[i]);
+        if(!hc_activated) {
+            btns[i] = document.createElement("button");
+            btns[i].textContent = 'x';
+            btns[i].id = `button-${i}`;
+            btns[i].className = "button";
+            btns[i].addEventListener("click", function() {
+                rm_f(txt);
+            });
+            paras[i].appendChild(btns[i]);
+        }
         elts.appendChild(paras[i]);
     }
 }
@@ -79,15 +82,17 @@ function addChild(paras, texts, btns, elts, rm_f, id_ext, btn_id) {
                 paras[ind].id = `${domain}-${id_ext}`;
                 paras[ind].className = "liste";
                 texts.push(document.createTextNode(`- ${domain} `));
-                btns.push(document.createElement("button"));
-                btns[ind].textContent = 'x';
-                btns[ind].id = `button-${i}`;
-                btns[ind].className = "button";
-                btns[ind].addEventListener("click", function() {
-                    rm_f(domain);
-                });
                 paras[ind].appendChild(texts[ind]);
-                paras[ind].appendChild(btns[ind]);
+                if(!hc_activated) {
+                    btns.push(document.createElement("button"));
+                    btns[ind].textContent = 'x';
+                    btns[ind].id = `button-${i}`;
+                    btns[ind].className = "button";
+                    btns[ind].addEventListener("click", function() {
+                        rm_f(domain);
+                    });
+                    paras[ind].appendChild(btns[ind]);
+                }
                 elts.appendChild(paras[ind]);
             });
         });
@@ -97,7 +102,6 @@ function addChild(paras, texts, btns, elts, rm_f, id_ext, btn_id) {
 }
 
 chrome.storage.local.get().then((result) => {
-    showChild(result.dfn_blocked, paras_blo, texts_blo, btns_blo, elts_blo, rm_elt_blo, "blo");
     if(result.dfn_use_dark_mode) {
         setEltsColor("dark");
     }
@@ -105,6 +109,9 @@ chrome.storage.local.get().then((result) => {
         document.getElementById("blocked_div").style.display = "block";
         document.getElementById('enter_pwd_div').remove();
     }
+    hc_activated = result.dfn_hardcore_mode;
+    console.log(hc_activated);
+    showChild(result.dfn_blocked, paras_blo, texts_blo, btns_blo, elts_blo, rm_elt_blo, "blo");
 });
 
 document.getElementById("block_btn").addEventListener("click", function() {

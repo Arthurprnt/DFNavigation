@@ -48,6 +48,11 @@ chrome.runtime.onInstalled.addListener(function (){
                 console.log(`Initialised websites timers`);
             });
         }
+        if(result.dfn_hardcore_mode === undefined) {
+            chrome.storage.local.set({dfn_hardcore_mode: false}).then(() => {
+                console.log(`Initialised hardcore mode to off`);
+            });
+        }
     });
     
 })
