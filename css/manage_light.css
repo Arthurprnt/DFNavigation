@@ -322,3 +322,30 @@ input:checked + .slider:before {
     padding-right: 8px;
     display: none;
 }
+
+.save_div {
+    display: flex;
+    justify-content: center;
+}
+
+.export_btn_div {
+    padding-right: 10px;
+}
+
+.exp_imp_btn {
+    background-color: #6c15de;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4%;
+    height: 40px;
+    width: 100px;
+}
+
+.imp_txt {
+    display: flex;
+    margin-top: 9px;
+    margin-left: 25px;
+}

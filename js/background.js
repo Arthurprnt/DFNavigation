@@ -29,7 +29,7 @@ chrome.runtime.onInstalled.addListener(function (){
             });
         }
         if(result.dfn_use_dark_mode === undefined) {
-            chrome.storage.local.set({dfn_use_dark_mode: false}).then(() => {
+            chrome.storage.local.set({dfn_use_dark_mode: true}).then(() => {
                 console.log(`Initialised dark mode use to false`);
             });        
         }
