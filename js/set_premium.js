@@ -269,7 +269,34 @@ document.getElementById("export_btn").addEventListener("click", function() {
         var url = URL.createObjectURL(blob);
         chrome.downloads.download({
             url: url,
-            filename: "suggested/filename/with/dfnavigation_save.txt"
+            filename: "dfnavigation_save.txt"
           });
     })
 })
+
+const file_input = document.getElementById("dnf_save_file");
+file_input.addEventListener('change', (event) => {
+    let file = file_input.files[0]
+    const reader = new FileReader();
+    reader.onload = function() {
+        const contents = reader.result;
+        try {
+            json_data = JSON.parse(contents);
+            let new_settings = {};
+            chrome.storage.local.set({dfn_blocked: json_data.dfn_blocked});
+            chrome.storage.local.set({dfn_limited: json_data.dfn_limited});
+            chrome.storage.local.set({dfn_timer: json_data.dfn_timer});
+            chrome.storage.local.set({dfn_day_time: json_data.dfn_day_time});
+            chrome.storage.local.set({dfn_last_connection: json_data.dfn_last_connection});
+            chrome.storage.local.set({dfn_use_dark_mode: json_data.dfn_use_dark_mode});
+            chrome.storage.local.set({dfn_custom_limited: json_data.dfn_custom_limited});
+            chrome.storage.local.set({dfn_website_time: json_data.dfn_website_time});
+            chrome.storage.local.set({dfn_hardcore_mode: false});
+            alert("Loaded this settings with success ! Reload this page to apply changes.");
+        } catch (err) {
+            alert("This is not a DFNavigation save file.");
+            console.log(err);
+        }
+    };
+    reader.readAsText(file);
+});
