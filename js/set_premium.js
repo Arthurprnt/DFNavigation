@@ -243,3 +243,33 @@ document.getElementById("access_btn").addEventListener("click", function() {
 document.getElementById("limit_btn").addEventListener("click", function() {
     addChild(paras_cus, texts_cus, btns_cus, elts_cus, rm_elt_cus, "cus", "limiting");
 })
+
+var dataURIToBlob = function(dataURI, mimetype) {
+    var BASE64_MARKER = ';base64,';
+    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+    var base64 = dataURI.substring(base64Index);
+    var raw = window.atob(base64);
+    var rawLength = raw.length;
+    var uInt8Array = new Uint8Array(rawLength);
+  
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+  
+    var bb = new this.BlobBuilder();
+    bb.append(uInt8Array.buffer);
+    return bb.getBlob(mimetype);
+  };
+
+document.getElementById("export_btn").addEventListener("click", function() {
+    chrome.storage.local.get().then((result) => {
+        result.dfn_hardcore_mode = false;
+        let data = JSON.stringify(result);
+        var blob = new Blob([data], {type: "json"});
+        var url = URL.createObjectURL(blob);
+        chrome.downloads.download({
+            url: url,
+            filename: "suggested/filename/with/dfnavigation_save.txt"
+          });
+    })
+})
