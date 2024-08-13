@@ -32,6 +32,7 @@ There was a time where you could subscribe to a premium version to access to add
 - Set a password to access the settings and modify them
 - Add a custom time limit per website
 - Enable hardcore mode (you won't be able to remove a website from the blocked list)
+- Export and import settings to switch of browser without having to reset-up everything
 
 ## Privacy Policies
 
