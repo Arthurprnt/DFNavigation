@@ -66,20 +66,7 @@ content or whose products or services we think may interest you.
 ### What Information Do We Collect?
 We collect information from you when you visit our service, register, place an order, subscribe to our newsletter, respond to a survey
 or fill out a form.
-- Email Addresses
-- Password
-
-### How Do We Use The Information We Collect?
-Any of the information we collect from you may be used in one of the following ways:
-- To personalize your experience (your information helps us to better respond to your individual needs)
-- To improve our service (we continually strive to improve our service offerings based on the information and feedback we receive
-from you)
-- To improve customer service (your information helps us to more effectively respond to your customer service requests and
-support needs)
-- To process transactions
-
-### How Long Do We Keep Your Information?
-We keep your information only so long as we need it to provide service to you and fulfill the purposes described in this policy. This is also the case for anyone that we share your information with and who carries out services on our behalf. When we no longer need to use your information and there is no need for us to keep it to comply with our legal or regulatory obligations, we'll either remove it from our systems or depersonalize it so that we can't identify you.
+- Nothing
 
 ### Your Consent
 By using our service, registering an account, or making a purchase, you consent to this Privacy Policy.
